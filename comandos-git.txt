@@ -1,250 +1,126 @@
 ITEM 1 ->
-	// El comando "git clone" nos permite clonar un repositorio en un nuevo directorio, en este caso un repositorio existente de GitHub especificado por la URL. Obtenemos el repositorio entero, en este caso solo tenía un fichero README.md
-
-C:\Users\carme\OneDrive\Escritorio>git clone https://github.com/rgCarmen/umafactorial.git
-Cloning into 'umafactorial'...
-remote: Enumerating objects: 3, done.
-remote: Counting objects: 100% (3/3), done.
-remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-Receiving objects: 100% (3/3), done.
+	// El comando "git clone" nos permite clonar un repositorio en un nuevo directorio, en este caso un repositorio existente de GitHub especificado por la URL. Obtenemos el repositorio entero, en esta ocasión solo tenía un fichero README.md
+git clone https://github.com/rgCarmen/umafactorial.git
 
 
 ITEM 3 ->
-	// El comando "git add" añade nuevos ficheros o cambios de ficheros ya existentes del directorio de trabajo al Staging Area. El staging area es un lugar lógico donde se almacenan los cambios hasta ser confirmados en el repositorio. De esta manera marcamos los cambios que serán incluidos en el siguiente commit. En este caso añadimos el nuevo fichero factorial.java al staging area.
+	// El comando "git add" añade nuevos ficheros o cambios de ficheros ya existentes del  de trabajo al Staging Area. El staging area es un lugar lógico donde se almacenan los cambios hasta ser confirmados en el repositorio. 
+	// De esta manera, marcamos los cambios que serán incluidos en el siguiente commit. En este caso añadimos el nuevo fichero factorial.java al staging area.
+git add factorial.java
 
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-
-	// El comando de "git commit" registra los cambios en el repositorio como instantánea del repositorio en el momento específico. Para que este comando funcione deben haberse añadido ficheros mediante "git add" anteriormente, ya que se fija en los cambios indicados en el staging area. Utilizamos "git commit -m" para añadir un mensaje descriptivo al commit. 
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "implementacion inicial"
-[main af0050d] implementacion inicial
- 1 file changed, 15 insertions(+)
- create mode 100644 factorial.java
+	// El comando de "git commit" registra los cambios en el repositorio como una instantánea del repositorio en el momento específico. 
+	// Para que este comando funcione deben haberse añadido ficheros mediante "git add" previamente, ya que se fija en los cambios indicados en el staging area. Utilizamos "git commit -m" para añadir un mensaje descriptivo al commit. 
+git commit -m "implementacion inicial"
 
 ITEM 4 ->
 	// De la misma forma que en ITEM 3, añadimos las nuevas modificaciones realizadas en el fichero factorial.java mediante el comando "git add" al staging area.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
+ git add factorial.java
 
 	// Confirmamos los cambios mediante el comando "git commit" con el mensaje requerido
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "refactorizacion"
-[main 52493a2] refactorizacion
- 1 file changed, 9 insertions(+), 4 deletions(-)
+git commit -m "refactorizacion"
 
 ITEM 5 ->
-	// El comando "git push" actualiza referencias remotas utilizando las locales. Nos va a permitir subir los commits desde el repositorio local al remoto. En esta caso estamos subiendo los cambios en la rama main al repositorio remoto origen.
+	// El comando "git push" actualiza referencias remotas utilizando las locales. Nos va a permitir subir los commits desde el repositorio local al remoto. En esta caso, estamos subiendo los cambios en la rama main al repositorio remoto origen.
+git push origin main
 
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git push origin main
-Enumerating objects: 7, done.
-Counting objects: 100% (7/7), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (6/6), 835 bytes | 417.00 KiB/s, done.      
-Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (1/1), done.
-To https://github.com/rgCarmen/umafactorial.git
-   d5e2e34..52493a2  main -> main
-
-	
-	// El comando "git checkout" actualiza los archivos en el directorio de trabajo para que coincidadn con la versión de esa rama. En este caso, mediante "git checkout -b", creamos una nueva rama y cambiamos a esta nueva rama en un solo comando. De esta manera, creamos una nueva rama llamada recursivo.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout -b recursivo
-Switched to a new branch 'recursivo'
+	// El comando "git checkout" actualiza los archivos en el directorio de trabajo para que coincidadn con la versión de la rama indicada. 
+	// En este caso, mediante "git checkout -b", creamos una nueva rama y cambiamos a esta nueva rama en un solo comando. De esta manera, creamos una nueva rama llamada recursivo.
+git checkout -b recursivo
 
 ITEM 7 ->
 	// Añadimos los cambios realizados en la rama recursivo en el fichero factorial.java mediante un commit.
-	
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "implementacion recursiva"
-[recursivo 403b29e] implementacion recursiva
- 1 file changed, 4 insertions(+), 4 deletions(-)
+git add factorial.java
+git commit -m "implementacion recursiva"
 
 	// Mediante "git push" subimos los cambios realizados en la rama recursivo al repositorio remoto, por lo que indicamos en esta ocasion como rama recursivo en lugar de main.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git push origin recursivo
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 400 bytes | 400.00 KiB/s, done.      
-Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-remote:
-remote: Create a pull request for 'recursivo' on GitHub by visiting:
-remote:      https://github.com/rgCarmen/umafactorial/pull/new/recursivo
-remote:
-To https://github.com/rgCarmen/umafactorial.git
- * [new branch]      recursivo -> recursivo
+git push origin recursivo
 
 ITEM 8 ->
 	// Mediante el comando "git checkout" cambiamos a la rama main. Se actualizarán los archivos del directorio de trabajo consecuentemente.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout main
-Switched to branch 'main'
-Your branch is up to date with 'origin/main'.
+git checkout main
 
 ITEM 10 ->
 	// Añadimos la modificación realizada en la rama main mediante un nuevo commit.	
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "correccion numeros negativos"
-[main 7c4c460] correccion numeros negativos
- 1 file changed, 7 insertions(+), 2 deletions(-)
+git add factorial.java
+git commit -m "correccion numeros negativos"
 
 	// Enviamos el commit realizado en la rama main al repositorio remoto mediante "git push"
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git push origin main
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 431 bytes | 431.00 KiB/s, done.
-Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/rgCarmen/umafactorial.git
-   52493a2..7c4c460  main -> main
+git push origin main
 
 ITEM 11 ->
 	// Mediante "git checkout" cambiamos a la rama recursivo.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout recursivo
-Switched to branch 'recursivo'
+git checkout recursivo
 
 	// Añadimos la modificación realizada en la rama recursivo mediante un nuevo commit.	
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "optimizacion"
-[recursivo 6ced23b] optimizacion
- 1 file changed, 1 insertion(+), 1 deletion(-)
+git add factorial.java
+git commit -m "optimizacion"
 
 ITEM 12 ->
 	// Cambiamos a la rama main nuevamente.
+git checkout main
 
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout main
-Switched to branch 'main'
-Your branch is up to date with 'origin/main'.
-
-
-	// El comando "git merge" fusiona los cambios de la rama indicada en la rama actual. En este caso añadirá los cambios de la rama recursivo en la rama main. Se realizar la fusión de forma automática en el caso de que no haya conflictos como ocurre en este caso.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git merge recursivo
-Auto-merging factorial.java
-Merge made by the 'ort' strategy.
- factorial.java | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+	// El comando "git merge" fusiona los cambios de la rama indicada en la rama actual. En este caso añadirá los cambios de la rama recursivo en la rama main. 
+	// Se realizar la fusión de forma automática en el caso de que no haya conflictos como ocurre en esta ocasión.
+git merge recursivo
 
 ITEM 13 ->
-	// Mediante "git checkout -b" creamos y cambiamos el espacio de trabajo a una nueva rama denominada refacIO
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout -b refacIO
-Switched to a new branch 'refacIO'
+	// Mediante "git checkout -b" creamos y cambiamos el espacio de trabajo a una nueva rama denominada refacIO.
+git checkout -b refacIO
 
 ITEM 14 ->
 	// Añadimos la modificación realizada en la rama refacIO mediante un nuevo commit.	
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "refactorizacion de metodo de entrada"
-[refacIO ee919b2] refactorizacion de metodo de entrada
- 1 file changed, 9 insertions(+), 4 deletions(-)
+git add factorial.java
+git commit -m "refactorizacion de metodo de entrada"
 
 ITEM 15 ->
 	// El comando "git stash" guardar temporalmente los cambios sin realizar un commit. Permitiendo por tanto cambiar la rama en la que se trabaja o otra acción si comprometer los cambios.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git stash
-Saved working directory and index state WIP on refacIO: ee919b2 refactorizacion de metodo de entrada
+git stash
 
 	// Cambiamos a la rama main mediante "git checkout".
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout main
-Switched to branch 'main'
-Your branch is ahead of 'origin/main' by 3 commits.
-  (use "git push" to publish your local commits)
+git checkout main
 
 ITEM 16 ->
 	// Añadimos la modificación realizada en la rama main mediante un nuevo commit.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "cambio de long a BigInteger"
-[main 56df5c8] cambio de long a BigInteger
- 1 file changed, 9 insertions(+), 7 deletions(-)
+git add factorial.java
+git commit -m "cambio de long a BigInteger"
 
 	// Enviamos el commit realizado en la rama main al repositorio remoto.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git push origin main
-Enumerating objects: 13, done.
-Counting objects: 100% (13/13), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (9/9), done.
-Writing objects: 100% (9/9), 1.16 KiB | 296.00 KiB/s, done.
-Total 9 (delta 3), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (3/3), completed with 1 local object.
-To https://github.com/rgCarmen/umafactorial.git
-   7c4c460..56df5c8  main -> main
+git push origin main
 
 	// Cambiamos a la rama refacIO
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout refacIO
-Switched to branch 'refacIO'
+git checkout refacIO
 
 	// Mediante el comando "git stash pop" aplicamos el cambio más reciente que se encuentra en el stash al directorio de trabajo recuperando estos cambios guardados y lo elimana del stash. 
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git stash pop
-On branch refacIO
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   factorial.java
-
-no changes added to commit (use "git add" and/or "git commit -a")
-Dropped refs/stash@{0} (ae83677d1d66d75a131ece9d74d3d6241cd30d6f)
-
+git stash pop
 
 	// Añadimos los cambios de la rama refacIO mediante un commit.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "refactorizacion de metodo de salida"
-[refacIO a009c16] refactorizacion de metodo de salida
- 1 file changed, 6 insertions(+), 2 deletions(-)
+git add factorial.java
+git commit -m "refactorizacion de metodo de salida"
 
 ITEM 17 ->
 	// Cambiamos a la rama main
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git checkout main  
-Switched to branch 'main'
-Your branch is up to date with 'origin/main'.
+git checkout main  
 
-	// Mediante "git merge", fusionamos los cambios de la rama refacIO en la rama main. En este caso de producen conflictos, por lo que es necesario completar el proceso de forma manual.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git merge refacIO
-Auto-merging factorial.java
-CONFLICT (content): Merge conflict in factorial.java
-Automatic merge failed; fix conflicts and then commit the result.
+	// Mediante "git merge", fusionamos los cambios de la rama refacIO en la rama main. En este caso, se producen conflictos, por lo que es necesario completar el proceso de forma manual.
+git merge refacIO
+>>Auto-merging factorial.java
+  CONFLICT (content): Merge conflict in factorial.java
+  Automatic merge failed; fix conflicts and then commit the result.
 
 ITEM 19 ->
-	//Añadimos los cambios en la rama main mediante un commit, completando así el proceso de merge.
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git add factorial.java
-
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git commit -m "mezcla de rama refacIO"
-[main 65808ba] mezcla de rama refacIO
-
+	// Añadimos los cambios en la rama main mediante un commit, completando así el proceso de merge.
+git add factorial.java
+git commit -m "mezcla de rama refacIO"
 
 	// Enviamos el commit realizado en la rama main al repositorio remoto.
+git push origin main
 
-PS C:\Users\carme\OneDrive\Escritorio\umafactorial> git push origin main
-Enumerating objects: 13, done.
-Counting objects: 100% (13/13), done.
-Delta compression using up to 12 threads
-Compressing objects: 100% (9/9), done.
-Writing objects: 100% (9/9), 1.10 KiB | 376.00 KiB/s, done.       
-Total 9 (delta 3), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (3/3), completed with 1 local object.
-To https://github.com/rgCarmen/umafactorial.git
-   56df5c8..65808ba  main -> main
+ITEM 21 ->
+	// Añadir fichero comandos-git.txt mediante un commit.
+git add comandos-git.txt
+git commit -m "adicion de historial de línea de comandos"
+
+ITEM 22 ->
+	// Enviamos todos los commit de todas las ramas locales al repositorio remoto
+git push --all origin
+directorio
